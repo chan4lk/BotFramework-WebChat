@@ -17,10 +17,11 @@
     "webpack-watch": "webpack --progress --watch",
     "clean": "rimraf built",
     "postinstall": "cd test && npm install",
-    "prepublish": "tsc && npm run build-css && webpack --progress --config webpack.production.config.js",
+    "prepublish": "npm run snyk-protect && tsc && npm run build-css && webpack --progress --config webpack.production.config.js",
     "start": "http-server -p 8000",
     "test": "concurrently  \"node test/mock_dl/index.js\" \"mocha test\" ",
-    "mock": "node test/mock_dl/index.js"
+    "mock": "node test/mock_dl/index.js",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -41,7 +42,8 @@
     "redux": "3.7.2",
     "redux-observable": "0.13.0",
     "rxjs": "5.4.3",
-    "tslib": "1.7.1"
+    "tslib": "1.7.1",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "@types/chai": "3.4.34",
@@ -81,5 +83,6 @@
     "botchat.css",
     "botchat.js",
     "CognitiveServices.js"
-  ]
+  ],
+  "snyk": true
 }
